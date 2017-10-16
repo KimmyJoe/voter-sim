@@ -6,5 +6,7 @@ describe Voter do
         expect(voter).to be_a(Voter)
     end
     
+    it "can report its name"
+    
     it "can report its political affilitaion"
 end 
