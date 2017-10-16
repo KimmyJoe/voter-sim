@@ -11,6 +11,9 @@ describe Politician do
         expect(politician.name).to eq("John Doe")
     end
     
-    it "can report its part affiliation"
+    it "can report its part affiliation" do
+        politician = Politician.new("John Doe", "Republican")
+        expect(politician.party_affiliation).to eq("Republican")
+    end
     
 end 
