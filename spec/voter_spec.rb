@@ -11,5 +11,8 @@ describe Voter do
         expect(voter.name).to eq("John Doe")
     end
     
-    it "can report its political affilitaion"
+    it "can report its political affilitaion" do
+        voter = Voter.new("John Doe", "Liberal")
+        expect(voter.political_affiliation).to eq("Liberal")
+    end
 end 
