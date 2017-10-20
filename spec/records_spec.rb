@@ -32,7 +32,7 @@ describe Records do
         records.voters.push(voter)
         
         expected_result = "Politician, #{politician.name}, #{politician.party_affiliation}\n"
-        expected_result += "Voter, #{voter.name}, #{voter.political_affiliation}"
+        expected_result += "Voter, #{voter.name}, #{voter.political_affiliation}\n"
         
         expect(records.list).to eq(expected_result)
     end
