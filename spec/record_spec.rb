@@ -5,8 +5,38 @@ describe Record do
     #aray voter - push, += or -= everytime you add or subtr a voter
     # create recors.create -> script in main.rb
     # main menu does not get tested. functions only called.
+    # 
+    # it is created
+    # it can create a voter record
+    # it can create a politician record
+    # it can list all voters
+    # it can list all politicians
+    # it can update a voters
+    # it can update a politicians
+    # it can delete a voters
+    # it can delete a politician
+    # 
+    # 
+    # ^^^^
+    # 
+    # test instantiation of records
+    # test creation of voter and politician
+    # test voters and politicians are stored in arrays, test we can use them
+    # voters and politicians should be updatable
+    # voters and politicians should be removable
+    # 
+    # ^^^^
+    # 
+    # 
+    # 
+    # 
+    # 
+    # 
+    # 
     
     it "can create a voters array" do
+        voters = ["John", "Johnny", "Jim", "Jay"]
+        
     end
     
     it "can create a politician's array" do
