@@ -52,7 +52,17 @@ describe Records do
         expect(index_for_nonexisting_voter).to eq(nil)
     end
     
-    it "can search for a politician by name"
+    it "can search for a politician by name" do
+        politician_1 = Politician.new("Jane Doe", "Republican")
+        politician_2 = Politician.new("Oliver Jones", "Democrat")
+        
+        index_for_politician = records.search_politician("Jane Doe")
+        index_for_nonexisting_politician = records.search_politician("Jamie Fox")
+        
+        expect(index_for_politician).to eq(1)
+        expect(index_for_nonexisting_politician).to eq(nil)
+    end
+    
     it "can update a voter"
     it "can update a politician"
     it "can delete voters"
