@@ -37,7 +37,19 @@ describe Records do
         expect(records.list).to eq(expected_result)
     end
     
-    it "can search for a voter by name"
+    it "can search for a voter by name" do
+        voter_1 = Voter.new("John Doe", "Liberal")
+        voter_2 = Voter.new("Dick Dickerson", "Tea Party")
+        
+        records = Records.new
+        records.voters.push(voter_1)
+        records.voters.push(voter_2)
+        
+        index_for_voter = records.search("Dick Dickerson")
+        
+        expect(index_for_voter).to eq(1)
+    end
+    
     it "can search for a politician by name"
     it "can update a voter"
     it "can update a politician"
