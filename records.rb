@@ -37,4 +37,13 @@ class Records
             @voters[index_for_voter].political_affiliation = new_political_affiliation
         end
     end
+    
+    def update_politician(old_name, new_name, new_party_affiliation)
+        index_for_politician = search_politician(old_name)
+ 
+        unless index_for_politician == nil
+            @politicians[index_for_politician].name = new_name
+            @politicians[index_for_politician].party_affiliation = new_party_affiliation
+        end
+    end
 end

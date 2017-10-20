@@ -82,17 +82,17 @@ describe Records do
     end
     
     it "can update a politician" do
-        voter_1 = Politician.new("Jane Doe", "Republican")
-        voter_2 = Politician.new("Oliver James", "Democrat")
+        politician_1 = Politician.new("Jane Doe", "Republican")
+        politician_2 = Politician.new("Oliver James", "Democrat")
         
         records = Records.new
         records.politicians.push(politician_1)
         records.politicians.push(politician_2)
         
-        records.update_politician("Oliver James", "Olly Jolly", "Right Wing")
+        records.update_politician("Oliver James", "Olly Jolly", "Republican")
         
-        expect(records.politicians[1].name).to eq("Dick Anderson")
-        expect(records.politicians[1].party_affiliation).to eq("Right Wing")
+        expect(records.politicians[1].name).to eq("Olly Jolly")
+        expect(records.politicians[1].party_affiliation).to eq("Republican")
     end
     it "can delete voters"
     it "can delete politicians"       
