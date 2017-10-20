@@ -1,7 +1,7 @@
 require './person.rb'
 
 class Voter < Person
-    attr_reader :political_affiliation
+    attr_accessor :political_affiliation
     
     def initialize(name, political_affiliation)
         # Don't create new instance variable, use from parent

@@ -75,7 +75,7 @@ describe Records do
         records.voters.push(voter_1)
         records.voters.push(voter_2)
         
-        records.update_voter("Dick Anderson", "Socialist")
+        records.update_voter("Dick Dickerson", "Dick Anderson", "Socialist")
         
         expect(records.voters[1].name).to eq("Dick Anderson")
         expect(records.voters[1].political_affiliation).to eq("Socialist")
