@@ -45,7 +45,7 @@ describe Records do
         records.voters.push(voter_1)
         records.voters.push(voter_2)
         
-        index_for_voter = records.search("Dick Dickerson")
+        index_for_voter = records.search_voter("Dick Dickerson")
         
         expect(index_for_voter).to eq(1)
     end

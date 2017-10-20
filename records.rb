@@ -20,4 +20,8 @@ class Records
         
         return results
     end
+    
+    def search_voter(name)
+        index = @voters.index{ |voter| voter.name == name }
+    end
 end
