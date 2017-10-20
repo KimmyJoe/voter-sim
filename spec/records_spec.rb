@@ -56,7 +56,11 @@ describe Records do
         politician_1 = Politician.new("Jane Doe", "Republican")
         politician_2 = Politician.new("Oliver Jones", "Democrat")
         
-        index_for_politician = records.search_politician("Jane Doe")
+        records = Records.new
+        records.politicians.push(politician_1)
+        records.politicians.push(politician_2)        
+        
+        index_for_politician = records.search_politician("Oliver Jones")
         index_for_nonexisting_politician = records.search_politician("Jamie Fox")
         
         expect(index_for_politician).to eq(1)

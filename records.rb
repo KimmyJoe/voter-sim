@@ -24,4 +24,8 @@ class Records
     def search_voter(name)
         index = @voters.index{ |voter| voter.name == name }
     end
+    
+    def search_politician(name)
+        index = @politicians.index{ |politician| politician.name == name }
+    end
 end
