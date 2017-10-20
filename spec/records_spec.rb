@@ -112,5 +112,22 @@ describe Records do
         expect(records.voters.count).to eq(1)
         expect(records.search_voter("Dick Dickerson")).to eq(nil)
     end
-    it "can delete politicians"       
+    it "can delete politicians"  do
+        politician_1 = Politician.new("Jane Doe", "Republican")
+        politician_2 = Politician.new("Oliver James", "Democrat")
+        
+        records = Records.new
+        records.politicians.push(politician_1)
+        records.politicians.push(politician_2)
+        
+        # If deleting existing politicians, array count should be 1 less.
+        # The search method should also return nil
+        
+        expect(records.politicians.count).to eq(2)
+        
+        records.delete_politician("Oliver James")
+        
+        expect(records.politicians.count).to eq(1)
+        expect(records.search_politician("Oliver James")).to eq(nil)
+    end      
 end
