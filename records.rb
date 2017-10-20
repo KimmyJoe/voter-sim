@@ -46,4 +46,12 @@ class Records
             @politicians[index_for_politician].party_affiliation = new_party_affiliation
         end
     end
+        
+    def delete_voter(name)
+        index_for_voter = search_voter(name)
+        
+        unless index_for_voter == nil 
+            @voters.delete_at(index_for_voter)
+        end
+    end
 end
