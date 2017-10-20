@@ -81,7 +81,19 @@ describe Records do
         expect(records.voters[1].political_affiliation).to eq("Socialist")
     end
     
-    it "can update a politician"
+    it "can update a politician" do
+        voter_1 = Politician.new("Jane Doe", "Republican")
+        voter_2 = Politician.new("Oliver James", "Democrat")
+        
+        records = Records.new
+        records.politicians.push(politician_1)
+        records.politicians.push(politician_2)
+        
+        records.update_politician("Oliver James", "Olly Jolly", "Right Wing")
+        
+        expect(records.politicians[1].name).to eq("Dick Anderson")
+        expect(records.politicians[1].party_affiliation).to eq("Right Wing")
+    end
     it "can delete voters"
     it "can delete politicians"       
 end
