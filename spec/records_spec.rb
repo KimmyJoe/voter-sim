@@ -23,7 +23,20 @@ describe Records do
         expect(records.politicians.last.party_affiliation).to eq("Republican")
     end
     
-    it "can list all voters and politicians on record"
+    it "can list all voters and politicians on record" do
+        politician = Politician.new("Jane Doe", "Republican")
+        voter = Voter.new("John Doe", "Liberal")
+        
+        records = Records.new
+        records.politicians.push(politician)
+        records.voters.push(voter)
+        
+        expected_result = "Politician, #{politician.name}, #{politician.party_affiliation}\n"
+        expected_result += "Voter, #{voter.name}, #{voter.political_affiliation}"
+        
+        expect(records.list).to eq(expected_result)
+    end
+    
     it "can search for a voter by name"
     it "can search for a politician by name"
     it "can update a voter"
