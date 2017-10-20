@@ -54,4 +54,12 @@ class Records
             @voters.delete_at(index_for_voter)
         end
     end
+    
+    def delete_politician(name)
+        index_for_politician = search_politician(name)
+        
+        unless index_for_politician == nil
+            @politicians.delete_at(index_for_politician)
+        end
+    end
 end
