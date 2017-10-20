@@ -46,8 +46,10 @@ describe Records do
         records.voters.push(voter_2)
         
         index_for_voter = records.search_voter("Dick Dickerson")
+        index_for_nonexisting_voter = records.search_voter("Jamie Fox")
         
         expect(index_for_voter).to eq(1)
+        expect(index_for_nonexisting_voter).to eq(nil)
     end
     
     it "can search for a politician by name"
