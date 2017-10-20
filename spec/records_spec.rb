@@ -1,8 +1,8 @@
-require './record.rb'
+require './records.rb'
 
-describe Record do
+describe Records do
     it "can add a voter to a voters array"
-    it "can add a politician to a politicians arra"
+    it "can add a politician to a politicians array"
     it "can list all voters and politicians on record"
     it "can search for a voter by name"
     it "can search for a politician by name"
