@@ -67,7 +67,20 @@ describe Records do
         expect(index_for_nonexisting_politician).to eq(nil)
     end
     
-    it "can update a voter"
+    it "can update a voter" do
+        voter_1 = Voter.new("John Doe", "Liberal")
+        voter_2 = Voter.new("Dick Dickerson", "Tea Party")
+        
+        records = Records.new
+        records.voters.push(voter_1)
+        records.voters.push(voter_2)
+        
+        records.update_voter("Dick Anderson", "Socialist")
+        
+        expect(records.voters[1].name).to eq("Dick Anderson")
+        expect(records.voters[1].political_affiliation).to eq("Socialist")
+    end
+    
     it "can update a politician"
     it "can delete voters"
     it "can delete politicians"       
