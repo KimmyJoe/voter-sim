@@ -1,3 +1,5 @@
+require './voter.rb'
+
 class Records 
     attr_accessor :voters
     attr_accessor :politicians
@@ -5,6 +7,11 @@ class Records
     def initialize 
         @voters = []
         @politicians = []
+    end
+    
+    def create_voter(name, political_affiliation) 
+        voter = Voter.new(name, political_affiliation)
+        @voters.push(voter)
     end
     
     def list

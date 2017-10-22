@@ -3,11 +3,9 @@ require './voter.rb'
 require './politician.rb'
 
 describe Records do
-    it "can add a voter to a voters array"  do
-        voter = Voter.new("John Doe", "Liberal")
-        
+    it "can create a voter and add it to a voters array"  do
         records = Records.new
-        records.voters.push(voter)
+        records.create_voter("John Doe", "Liberal")
         
         expect(records.voters.last.name).to eq("John Doe")
         expect(records.voters.last.political_affiliation).to eq("Liberal")
