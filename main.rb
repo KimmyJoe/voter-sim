@@ -22,6 +22,8 @@ class Main
                 create_operation
             when "l"
                 puts @records.list
+            when "u"
+                update_operation
             when "q"
                 return desired_operation
             else
@@ -52,6 +54,40 @@ class Main
             else
                 puts "Oops! We don't support that"  
         end
+    end
+    
+    def update_operation
+        puts "Who would you like to update?"
+        name_old = gets.chomp.downcase.strip
+        
+        # Check if politician exists in records
+        index_for_politician = @records.search_politician(name_old)
+        if index_for_politician
+            puts "New name?"
+            name_new = gets.chomp.downcase.strip
+            puts "New party affilitaion?"
+            puts "(D)emocrat or (R)epublican"
+            affilitaion_new = gets.chomp.downcase.strip
+            @records.update_politician(name_old, name_new, affilitaion_new)
+            
+            return
+        end
+        
+        # Policitian doesn't exist, so check if voter exists in records
+        index_for_voter = @records.search_voter(name_old)
+        if index_for_voter
+            puts "New name?"
+            name_new = gets.chomp.downcase.strip
+            puts "New political affiliation?"
+            puts "(L)iberal, (C)onservative, (T)ea Party, (S)ocialist, or (N)eutral"
+            affilitaion_new = gets.chomp.downcase.strip
+            @records.update_voter(name_old, name_new, affilitaion_new)
+           
+            return
+        end
+        
+        # No such records, display user message.
+        puts "#{name_old} not found in our records."
     end
 end
 
