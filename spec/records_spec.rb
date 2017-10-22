@@ -1,6 +1,4 @@
 require './records.rb'
-require './voter.rb'
-require './politician.rb'
 
 describe Records do
     it "can create a voter and add it to a voters array"  do
@@ -20,15 +18,13 @@ describe Records do
     end
     
     it "can list all voters and politicians on record" do
-        politician = Politician.new("Jane Doe", "Republican")
-        voter = Voter.new("John Doe", "Liberal")
-        
         records = Records.new
-        records.politicians.push(politician)
-        records.voters.push(voter)
+
+        records.create_politician("Jane Doe", "Republican")
+        records.create_voter("John Doe", "Liberal")
         
-        expected_result = "Politician, #{politician.name}, #{politician.party_affiliation}\n"
-        expected_result += "Voter, #{voter.name}, #{voter.political_affiliation}\n"
+        expected_result = "Politician, #{records.politicians.last.name}, #{records.politicians.last.party_affiliation}\n"
+        expected_result += "Voter, #{records.voters.last.name}, #{records.voters.last.political_affiliation}\n"
         
         expect(records.list).to eq(expected_result)
     end
