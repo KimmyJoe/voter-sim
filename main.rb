@@ -13,14 +13,17 @@ class Main
     end 
     
     def display_menu
-        puts "What would you like to create?"
-        puts "(C)reate, (L)ist, (U)pdate, or (D)elete"
+        puts "What would you like to do?"
+        puts "(C)reate, (L)ist, (U)pdate, (D)elete or (Q)uit"
         desired_operation = gets.chomp.downcase.strip
 
         case desired_operation
             when "c"
                 create_operation
-
+            when "l"
+                puts @records.list
+            when "q"
+                return desired_operation
             else
                 puts "Oops! We don't support that"
         end       
@@ -54,6 +57,10 @@ end
 
 main = Main.new
 main.display_welcome
-main.display_menu
+while true
+    if main.display_menu == "q"
+        break
+    end
+end
 
 
