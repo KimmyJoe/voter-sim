@@ -42,12 +42,9 @@ describe Records do
     end
     
     it "can search for a politician by name" do
-        politician_1 = Politician.new("Jane Doe", "Republican")
-        politician_2 = Politician.new("Oliver Jones", "Democrat")
-        
         records = Records.new
-        records.politicians.push(politician_1)
-        records.politicians.push(politician_2)        
+        records.create_politician("Jane Doe", "Republican")
+        records.create_politician("Oliver Jones", "Democrat")
         
         index_for_politician = records.search_politician("Oliver Jones")
         index_for_nonexisting_politician = records.search_politician("Jamie Fox")
@@ -57,12 +54,9 @@ describe Records do
     end
     
     it "can update a voter" do
-        voter_1 = Voter.new("John Doe", "Liberal")
-        voter_2 = Voter.new("Dick Dickerson", "Tea Party")
-        
         records = Records.new
-        records.voters.push(voter_1)
-        records.voters.push(voter_2)
+        records.create_voter("John Doe", "Liberal")
+        records.create_voter("Dick Dickerson", "Tea Party")
         
         records.update_voter("Dick Dickerson", "Dick Anderson", "Socialist")
         
@@ -71,12 +65,9 @@ describe Records do
     end
     
     it "can update a politician" do
-        politician_1 = Politician.new("Jane Doe", "Republican")
-        politician_2 = Politician.new("Oliver James", "Democrat")
-        
         records = Records.new
-        records.politicians.push(politician_1)
-        records.politicians.push(politician_2)
+        records.create_politician("Jane Doe", "Republican")
+        records.create_politician("Oliver James", "Democrat")
         
         records.update_politician("Oliver James", "Olly Jolly", "Republican")
         
