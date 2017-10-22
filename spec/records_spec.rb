@@ -30,12 +30,9 @@ describe Records do
     end
     
     it "can search for a voter by name" do
-        voter_1 = Voter.new("John Doe", "Liberal")
-        voter_2 = Voter.new("Dick Dickerson", "Tea Party")
-        
         records = Records.new
-        records.voters.push(voter_1)
-        records.voters.push(voter_2)
+        records.create_voter("John Doe", "Liberal")
+        records.create_voter("Dick Dickerson", "Tea Party")
         
         index_for_voter = records.search_voter("Dick Dickerson")
         index_for_nonexisting_voter = records.search_voter("Jamie Fox")
