@@ -24,6 +24,8 @@ class Main
                 puts @records.list
             when "u"
                 update_operation
+            when "d"
+                delete_operation
             when "q"
                 return desired_operation
             else
@@ -69,6 +71,7 @@ class Main
             puts "(D)emocrat or (R)epublican"
             affilitaion_new = gets.chomp.downcase.strip
             @records.update_politician(name_old, name_new, affilitaion_new)
+            puts "Successfully updated politician #{name_new}"
             
             return
         end
@@ -82,12 +85,33 @@ class Main
             puts "(L)iberal, (C)onservative, (T)ea Party, (S)ocialist, or (N)eutral"
             affilitaion_new = gets.chomp.downcase.strip
             @records.update_voter(name_old, name_new, affilitaion_new)
-           
+            puts "Successfully updated voter #{name_new}"
+            
             return
         end
         
         # No such records, display user message.
         puts "#{name_old} not found in our records."
+    end
+    
+    def delete_operation
+        puts "Who would you like to delete?"
+        name = gets.chomp.downcase.strip
+        
+        index_for_politician = @records.search_politician(name)
+        if index_for_politician
+            @records.delete_politician(name)
+            puts "Successfully deleted politician with #{name}"
+            return
+        end
+        
+        index_for_voter = @records.search_voter(name)
+        if index_for_voter
+            @records.delete_voter(name)
+            puts "Successfully deleted politician with #{name}"
+            
+            return
+        end
     end
 end
 
