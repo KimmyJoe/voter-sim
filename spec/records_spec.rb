@@ -11,11 +11,9 @@ describe Records do
         expect(records.voters.last.political_affiliation).to eq("Liberal")
     end
     
-    it "can add a politician to a politicians array" do
-        politician = Politician.new("Jane Doe", "Republican")
-        
+    it "can create a politician and add it to a politicians array" do
         records = Records.new
-        records.politicians.push(politician)
+        records.create_politician("Jane Doe", "Republican")
         
         expect(records.politicians.last.name).to eq("Jane Doe")
         expect(records.politicians.last.party_affiliation).to eq("Republican")
