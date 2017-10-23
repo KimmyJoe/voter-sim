@@ -168,6 +168,7 @@ class Main
             puts "Successfully deleted politician #{upper_name}"
             
             return
+            elsif puts "Oops! We don't support that"
         end
     end
 end
