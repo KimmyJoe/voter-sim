@@ -44,15 +44,41 @@ class Main
                 name = gets.chomp.downcase.strip
                 puts "Party?"
                 puts "(D)emocrat or (R)epublican"
-                affilitaion = gets.chomp.downcase.strip
-                @records.create_politician(name, affilitaion)
-            when "v"
+                affiliation = gets.chomp.downcase.strip
+                
+                case affiliation
+                    when "d"
+                        affiliation = "Democrat"
+                    when "r"
+                        affiliation = "Republican"
+                    else 
+                        puts "Oops! We don't support that"
+                end
+          
+                @records.create_politician(name.split.map(&:capitalize).join(' '), affiliation.split.map(&:capitalize).join(' '))
+            when "v" 
                 puts "Name?"
                 name = gets.chomp.downcase.strip
                 puts "Politics?"
                 puts "(L)iberal, (C)onservative, (T)ea Party, (S)ocialist, or (N)eutral"
-                affilitaion = gets.chomp.downcase.strip
-                @records.create_voter(name, affilitaion)
+                affiliation = gets.chomp.downcase.strip
+            
+            case affiliation
+                    when "l"
+                        affiliation = "Liberal"
+                    when "c"
+                        affiliation = "Conservative"
+                    when "t"
+                        affiliation = "Tea Party"
+                    when "s"
+                        affiliation = "Socialist"
+                    when "n"
+                        affiliation = "Neutral"
+                    else 
+                        puts "Oops! We don't support that"
+                end
+            
+                @records.create_voter(name.split.map(&:capitalize).join(' '), affiliation.split.map(&:capitalize).join(' '))
             else
                 puts "Oops! We don't support that"  
         end
@@ -63,28 +89,54 @@ class Main
         name_old = gets.chomp.downcase.strip
         
         # Check if politician exists in records
-        index_for_politician = @records.search_politician(name_old)
+        index_for_politician = @records.search_politician(name_old.split.map(&:capitalize).join(' '))
         if index_for_politician
             puts "New name?"
             name_new = gets.chomp.downcase.strip
             puts "New party affilitaion?"
             puts "(D)emocrat or (R)epublican"
-            affilitaion_new = gets.chomp.downcase.strip
-            @records.update_politician(name_old, name_new, affilitaion_new)
+            affiliation_new = gets.chomp.downcase.strip
+            
+            case affiliation_new
+                when "d"
+                    affiliation_new = "Democrat"
+                when "r"
+                    affiliation_new = "Republican"
+                else 
+                    puts "Oops! We don't support that"
+            end
+            
+            @records.update_politician(name_old.split.map(&:capitalize).join(' '), name_new.split.map(&:capitalize).join(' '), affilitaion_new.split.map(&:capitalize).join(' '))
             puts "Successfully updated politician #{name_new}"
             
             return
         end
         
         # Policitian doesn't exist, so check if voter exists in records
-        index_for_voter = @records.search_voter(name_old)
+        index_for_voter = @records.search_voter(name_old.split.map(&:capitalize).join(' '))
         if index_for_voter
             puts "New name?"
             name_new = gets.chomp.downcase.strip
             puts "New political affiliation?"
             puts "(L)iberal, (C)onservative, (T)ea Party, (S)ocialist, or (N)eutral"
-            affilitaion_new = gets.chomp.downcase.strip
-            @records.update_voter(name_old, name_new, affilitaion_new)
+            affiliation_new = gets.chomp.downcase.strip
+            
+            case affiliation_new
+                    when "l"
+                        affiliation_new = "Liberal"
+                    when "c"
+                        affiliation_new = "Conservative"
+                    when "t"
+                        affiliation_new = "Tea Party"
+                    when "s"
+                        affiliation_new = "Socialist"
+                    when "n"
+                        affiliation_new = "Neutral"
+                    else 
+                        puts "Oops! We don't support that"
+                end
+            
+            @records.update_voter(name_old.split.map(&:capitalize).join(' '), name_new.split.map(&:capitalize).join(' '), affilitaion_new.split.map(&:capitalize).join(' '))
             puts "Successfully updated voter #{name_new}"
             
             return
@@ -97,18 +149,22 @@ class Main
     def delete_operation
         puts "Who would you like to delete?"
         name = gets.chomp.downcase.strip
+        puts "name before =", name
+        upper_name = name.split.map(&:capitalize).join(' ')
+        puts "upper_name after =", upper_name
         
-        index_for_politician = @records.search_politician(name)
+        index_for_politician = @records.search_politician(upper_name)
+        puts "index =", index_for_politician
         if index_for_politician
-            @records.delete_politician(name)
-            puts "Successfully deleted politician with #{name}"
+            @records.delete_politician(upper_name)
+            puts "Successfully deleted politician with #{upper_name}"
             return
         end
         
-        index_for_voter = @records.search_voter(name)
+        index_for_voter = @records.search_voter(upper_name)
         if index_for_voter
-            @records.delete_voter(name)
-            puts "Successfully deleted politician with #{name}"
+            @records.delete_voter(upper_name)
+            puts "Successfully deleted politician with #{upper_name}"
             
             return
         end
