@@ -177,7 +177,7 @@ main = Main.new
 main.display_welcome
 while true
     if main.display_menu == "q"
-        puts "Thank you for using the Voter Simulator. Havew a great day!"
+        puts "Thank you for using the Voter Simulator. Have a great day!"
         break
     end
 end
