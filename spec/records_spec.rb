@@ -23,6 +23,7 @@ describe Records do
         records.create_politician("Jane Doe", "Republican")
         records.create_voter("John Doe", "Liberal")
         
+        expected_result = ""
         expected_result += "Politician, #{records.politicians.last.name}, #{records.politicians.last.party_affiliation}\n"
         expected_result += "Voter, #{records.voters.last.name}, #{records.voters.last.political_affiliation}\n"
         
