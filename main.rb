@@ -87,12 +87,14 @@ class Main
     def update_operation
         puts "Who would you like to update?"
         name_old = gets.chomp.downcase.strip
+        upper_name_old = name_old.split.map(&:capitalize).join(' ')
         
         # Check if politician exists in records
-        index_for_politician = @records.search_politician(name_old.split.map(&:capitalize).join(' '))
+        index_for_politician = @records.search_politician(upper_name_old)
         if index_for_politician
             puts "New name?"
             name_new = gets.chomp.downcase.strip
+            upper_name_new = name_new.split.map(&:capitalize).join(' ')
             puts "New party affilitaion?"
             puts "(D)emocrat or (R)epublican"
             affiliation_new = gets.chomp.downcase.strip
@@ -106,8 +108,8 @@ class Main
                     puts "Oops! We don't support that"
             end
             
-            @records.update_politician(name_old.split.map(&:capitalize).join(' '), name_new.split.map(&:capitalize).join(' '), affilitaion_new.split.map(&:capitalize).join(' '))
-            puts "Successfully updated politician #{name_new}"
+            @records.update_politician(upper_name_old, upper_name_new, affiliation_new)
+            puts "Successfully updated politician #{upper_name_new}"
             
             return
         end
@@ -117,7 +119,8 @@ class Main
         if index_for_voter
             puts "New name?"
             name_new = gets.chomp.downcase.strip
-            puts "New political affiliation?"
+            upper_name_new = name_new.split.map(&:capitalize).join(' ')
+            puts "New political affilitaion?"
             puts "(L)iberal, (C)onservative, (T)ea Party, (S)ocialist, or (N)eutral"
             affiliation_new = gets.chomp.downcase.strip
             
@@ -136,8 +139,8 @@ class Main
                         puts "Oops! We don't support that"
                 end
             
-            @records.update_voter(name_old.split.map(&:capitalize).join(' '), name_new.split.map(&:capitalize).join(' '), affilitaion_new.split.map(&:capitalize).join(' '))
-            puts "Successfully updated voter #{name_new}"
+            @records.update_voter(upper_name_old, upper_name_new, affiliation_new)
+            puts "Successfully updated voter #{upper_name_new}"
             
             return
         end
@@ -149,22 +152,20 @@ class Main
     def delete_operation
         puts "Who would you like to delete?"
         name = gets.chomp.downcase.strip
-        puts "name before =", name
         upper_name = name.split.map(&:capitalize).join(' ')
-        puts "upper_name after =", upper_name
-        
+     
         index_for_politician = @records.search_politician(upper_name)
-        puts "index =", index_for_politician
+     
         if index_for_politician
             @records.delete_politician(upper_name)
-            puts "Successfully deleted politician with #{upper_name}"
+            puts "Successfully deleted politician #{upper_name}"
             return
         end
         
         index_for_voter = @records.search_voter(upper_name)
         if index_for_voter
             @records.delete_voter(upper_name)
-            puts "Successfully deleted politician with #{upper_name}"
+            puts "Successfully deleted politician #{upper_name}"
             
             return
         end
@@ -175,6 +176,7 @@ main = Main.new
 main.display_welcome
 while true
     if main.display_menu == "q"
+        puts "Thank you for using the Voter Simulator. Havew a great day!"
         break
     end
 end
